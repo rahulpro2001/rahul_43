@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        vector<int> ans,ans1(nums1.size());
+        stack<int> st;
+        for(int i=nums2.size()-1;i>=0;i--)
+        {
+            if(st.size()==0) ans.push_back(-1);
+            else if(nums2[i]<st.top()) ans.push_back(st.top());
+            else 
+            {
+                while(st.size()>0  && st.top()<nums2[i]) st.pop();
+                if(st.size()>0) ans.push_back(st.top());
+                else ans.push_back(-1);
+            }
+            st.push(nums2[i]);
+        }
+        reverse(nums2.begin(),nums2.end());
+        for(int i=0;i<nums1.size();i++)
+        {
+            int ind = find(nums2.begin(),nums2.end(),nums1[i])-nums2.begin();
+            ans1[i]=ans[ind];
+        }
+        // for(int i=0;i<ans1.size();i++) cout<<ans1[i]<<" ";
+        return ans1;
+    }
+};
