@@ -3,7 +3,6 @@
         if(a.profit>b.profit) return true;
         return false;
     }
-    
     vector<int> JobScheduling(Job arr[], int n) 
     { 
         sort(arr,arr+n,cmp);
@@ -21,9 +20,7 @@
                     count++;
                     break;
                 }
-            }
-            
-        }
-        
+            }   
+        }    
       return {count,sum};  
     }

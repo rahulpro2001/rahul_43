@@ -1,0 +1,91 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define n 5
+stack<int> st1,st2;
+
+void Push()
+{
+   if(st1.size()==n){
+       cout<<"overflow\n";
+       return;
+   }
+   int x;cout<<"enter value: ";cin>>x;
+   st1.push(x);
+}
+
+void popp()
+{
+    if(st1.size()==0){
+        cout<<"underflow";return;
+    }
+     while(st1.size()!=1)
+     {
+       st2.push(st1.top());st1.pop();
+     }
+     cout<<"del :"<<st1.top();st1.pop();
+     while(!st2.empty())
+     {
+        st1.push(st2.top());st2.pop();   
+     }
+}
+
+void front()
+{
+    if(st1.size()==0){
+        cout<<"queue is empty ";return;
+    }
+    
+      while(st1.size()!=1)
+     {
+       st2.push(st1.top());st1.pop();
+     }
+     cout<<"front :"<<st1.top();
+     while(!st2.empty())
+     {
+        st1.push(st2.top());st2.pop();   
+     }
+}
+
+void back()
+{
+    cout<<"last element: "<<st1.top();return;
+}
+
+int main() {
+   int ch;
+   do {
+    cout<<"1) Push in queue"<<endl;
+   cout<<"2) Pop from queue"<<endl;
+   cout<<"3) Display front"<<endl;
+  cout<<"4) back element"<<endl;
+   cout<<"5) exit"<<endl;
+      cout<<"Enter choice: "<<endl;
+      cin>>ch;
+      switch(ch) {
+         case 1: {
+            Push();
+            break;
+         }
+         case 2: {
+            popp();
+            break;
+         }
+         case 3: {
+            front();
+            break;
+         }
+         case 4: {
+            back();
+            break;
+         }
+         case 5: {
+            cout<<"Exit"<<endl;
+            break;
+         }
+         default: {
+            cout<<"Invalid Choice"<<endl;
+         }
+      }
+   }while(ch!=5);
+   return 0;
+}

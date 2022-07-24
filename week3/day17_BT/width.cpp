@@ -12,8 +12,8 @@ public:
             int last;
             for(int i =0 ;i< n;i++)
             {
-                 TreeNode *node = q.front().second;
-                  long long lvl = q.front().first-cur;
+                TreeNode *node = q.front().second;
+                long long lvl = q.front().first-cur;
                 if(i==0)first = lvl;
                 if(i==n-1)last = lvl;
                 q.pop();
@@ -25,5 +25,7 @@ public:
         return maxi;
     }
 };
+
+// 2i+1   2i+2
         // 0-n 
         // o-n

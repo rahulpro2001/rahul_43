@@ -1,0 +1,19 @@
+class Solution {
+public:
+    string bestHand(vector<int>& ranks, vector<char>& suits) {
+       map<char,int> mpsuit;
+        map<int,int> mpranks;
+        for(int i=0;i<suits.size();i++)mpsuit[suits[i]]++;
+        for(int i=0;i<ranks.size();i++)mpranks[ranks[i]]++;
+        for(auto it:mpsuit)
+        {
+            if(it.second==5) return "Flush";
+        }
+         for(auto it:mpranks)
+        {
+            if(it.second>=3) return "Three of a Kind";
+             else if(it.second==2) return "Pair";
+        }
+         return "High Card";
+    }
+};
