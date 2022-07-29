@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int maxProduct(vector<int>& nums) {
+        int maxi = nums[0];
+        int mini = nums[0];
+        int ans = nums[0];
+        for(int i = 1;i<nums.size();i++)
+        {
+            int temp = maxi;
+            maxi = max(nums[i],max(nums[i]*maxi,nums[i]*mini));
+            mini = min(nums[i],min(nums[i]*mini,nums[i]*temp));
+            ans = max(ans,maxi);
+        }
+        return ans;
+    }
+};
+
+// -1 -2 -3 so on -3 it can be pos or neg so for that we have to keep track of both min and max
+    
+  
