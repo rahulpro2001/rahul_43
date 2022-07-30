@@ -1,0 +1,14 @@
+TreeNode* func(vector<int> nums,int st,int end)
+    {
+        if(st>end)return nullptr;
+        int mid = (st+end)/2;
+        TreeNode* node = new TreeNode(nums[mid]);
+        node->left = func(nums,st,mid-1);
+        node->right = func(nums,mid+1,end);
+        return node;
+    }
+    
+    TreeNode* sortedArrayToBST(vector<int>& nums) {
+        TreeNode* root = func(nums,0,nums.size()-1);
+        return root;
+    }

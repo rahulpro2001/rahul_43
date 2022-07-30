@@ -1,0 +1,20 @@
+void func(int& cnt,int& ans,Node* root,int k)
+{
+    if(root==nullptr)return;
+    func(cnt,ans,root->right,k);
+    cnt++;
+    if(k==cnt){ans = root->data;return;}
+    func(cnt,ans,root->left,k);
+}
+
+class Solution
+{
+    public:
+    int kthLargest(Node *root, int k)
+    {
+        int cnt= 0;
+        int ans;
+         func(cnt,ans,root,k);
+         return ans;
+    }
+};

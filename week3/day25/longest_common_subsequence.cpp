@@ -17,7 +17,7 @@ public:
 };           
     //            ______
 // if !equal then|
-            //   |
+            //   |max
             //   |
             // else \
             //        \+1
