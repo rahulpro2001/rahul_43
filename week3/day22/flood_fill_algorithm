@@ -1,0 +1,26 @@
+ void func(int par,vector<vector<int>>& image, int sr, int sc, int color)
+    {   
+        if(sr<0 || sr==image.size() || sc<0 || sc==image[0].size())return;
+        if(image[sr][sc]==color || par!=image[sr][sc])return;
+     
+        vector<int> dx = {0,+1,0,-1};
+        vector<int> dy = {+1,0,-1,0};
+        
+        int temp = image[sr][sc];
+        image[sr][sc] = color; 
+        
+        for(int i=0;i<4;i++)
+        {
+            int nextr = sr+dx[i];int nextc = sc+dy[i];
+            func(temp,image,nextr,nextc,color);
+        }
+        return ;
+    }
+    
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
+        if(image[sr][sc]==color)return image;
+        func(image[sr][sc],image,sr,sc,color);
+        return image;
+    }
+    
+    // O(NXM)
