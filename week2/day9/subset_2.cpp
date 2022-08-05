@@ -19,3 +19,5 @@ public:
         return ans;
     }
 };
+
+// tc 2^n * n    recursion * copying the data structure into the sc- 2^n * k

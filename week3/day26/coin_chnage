@@ -1,0 +1,17 @@
+int coinChange(vector<int>& coins, int amount) {
+        vector<int> dp(amount+1,INT_MAX);
+        dp[0] = 0;
+        for(int i = 1;i<=amount;i++)
+        {
+            int mini = INT_MAX;
+            for(auto it:coins)
+            {
+                if(i>=it)mini = min(mini,dp[i-it]);
+            }
+            if(mini!=INT_MAX)
+            dp[i] = mini+1;
+        }
+        if(dp[amount]!=INT_MAX) return dp[amount];
+        return -1;
+        // dp[amount]==0?return -1:return dp[amount];
+    }

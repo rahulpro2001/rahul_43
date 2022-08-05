@@ -34,3 +34,10 @@ public:
         return ans;
     }
 };
+/*2 
+N
+  possible substrings in the worst case. For each substring, it takes \mathcal{O}(N)O(N) time to generate substring and determine if it a palindrome or not. This gives us time complexity as \mathcal{O}(N \cdot 2^{N})O(N⋅2 
+N
+ )
+
+*/

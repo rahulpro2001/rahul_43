@@ -5,7 +5,6 @@
         {
             s=s->next;
             f=f->next->next;
-            if(s==f)return true;
         }
         s=head;
         while(s!=f)

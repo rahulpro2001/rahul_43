@@ -27,3 +27,4 @@ public:
         return ans;
     }
 };
+// tc 2^n * k
