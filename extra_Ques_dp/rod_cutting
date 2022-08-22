@@ -1,0 +1,39 @@
+int func(int ind,vector<int> &price,int N,vector<vector<int>>& dp)
+{
+    if(dp[ind][N]!=-1)return dp[ind][N];
+    if(ind==0)return (N*price[0]);
+    int ntake = 0+func(ind-1,price,N,dp);
+    int len = ind + 1 ;
+    int take = INT_MIN;
+    if(len<=N) take = price[ind] + func(ind,price,N-len,dp);
+    return dp[ind][N] =  max(take,ntake);
+}
+int cutRod(vector<int> &price, int n)
+{
+    vector<vector<int>> dp(price.size()+1,vector<int> (n+1,-1));
+    return func(price.size()-1,price,n,dp);
+}
+// tc nxn
+// sc-nxn+aux
+
+
+
+
+// dp tab
+int cutRod(vector<int> &price, int n)
+{
+    vector<vector<int>> dp(n,vector<int> (n+1,-1));
+    for(int i=0;i<n+1;i++)dp[0][i] = i*price[0];
+    for(int i = 1;i<n;i++)
+    {
+        int ntk,take=INT_MIN;
+        for(int j = 0;j<n+1;j++)
+        {
+            ntk = dp[i-1][j];
+            take = INT_MIN;
+            if(j>=i+1) take = price[i] + dp[i][j-i-1];
+            dp[i][j] = max(take,ntk);
+        } 
+    }
+    return dp[n-1][n];
+}

@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        int lsf = prices[0];
+        
+        // profit if we sell today by getting minimum in the prevuios
+        
+        vector<int> left(n);
+        for(int i=1;i<n;i++)
+        {
+            if(prices[i]<lsf)lsf = prices[i];
+            int profit = prices[i] - lsf;
+            left[i] = max(left[i-1],profit);
+        }
+        
+    //         proft if we sellin future eith the best rpuce
+        int msf = prices[n-1];
+        vector<int> right(n);
+        for(int i=n-2;i>=0;i--)
+        {
+            if(prices[i]>msf)msf = prices[i];
+            int profit = msf - prices[i] ;
+            right[i] = max(right[i+1],profit);
+        }
+        
+        int maxi = 0;
+        for(int i = 0;i<n;i++)maxi = max(maxi,left[i]+right[i]);
+        
+        return maxi;
+    }
+};
